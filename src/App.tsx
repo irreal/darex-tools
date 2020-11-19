@@ -5,6 +5,7 @@ import {
   VStack,
   Grid,
   theme,
+  Heading,
 } from "@chakra-ui/react"
 import {
   BrowserRouter as Router,
@@ -24,6 +25,12 @@ export const App = () => (
           <Router>
             <Switch>
               <Route exact path="/">
+                <Box position="fixed" left="0" top="0" width="100vw" height="100vh" zIndex={-1} opacity="0.2">
+                  <video id="video" className="h-v is-playing is-visible" muted loop autoPlay width="100%" height="100%" >
+                    <source src="https://www.darex.rs/uploads/documents/empire_plugin/Sequence%2001_5.mp4" type="video/mp4" />
+                  </video>
+                </Box>
+                <Heading>Darex Online Alati:</Heading>
                 <Link to="/csv-xlsx">CSV u XLSX konverter</Link>
               </Route>
               <Route path="/csv-xlsx">
