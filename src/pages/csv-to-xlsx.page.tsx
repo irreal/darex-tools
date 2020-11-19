@@ -57,12 +57,12 @@ export const CsvToXslsXPage: React.FC = () => {
     })
     return (
         <>
-            <Box position="fixed" left="0" top="0" width="100vw" height="100vh" zIndex={-1}>
+            <Box position="fixed" left="0" top="0" width="100vw" height="100vh" zIndex={-1} opacity={0.1}>
                 <video id="video" className="h-v is-playing is-visible" muted loop autoPlay width="100%" height="100%" >
                     <source src="https://www.darex.rs/uploads/documents/empire_plugin/Sequence%2001_5.mp4" type="video/mp4" />
                 </video>
             </Box>
-            <Box background="gray.100" boxShadow="rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;" width="80vw" height="80vh" d="flex" alignItems="center" justifyItems="center" opacity="0.9">
+            <Box background="gray.300" boxShadow="rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;" width="80vw" height="80vh" d="flex" alignItems="center" justifyItems="center" opacity="0.9">
                 <Box {...getRootProps()} width="100%" height="100%" d="flex" alignItems="center" opacity={0.8}>
                     <input {...getInputProps()} />
                     {
