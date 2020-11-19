@@ -2,15 +2,18 @@ import * as React from "react"
 import {
   ChakraProvider,
   Box,
-  Text,
-  Link,
   VStack,
-  Code,
   Grid,
   theme,
 } from "@chakra-ui/react"
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import { ColorModeSwitcher } from "./ColorModeSwitcher"
-import { Logo } from "./Logo"
+import { CsvToXslsXPage } from "./pages/csv-to-xlsx.page";
 
 export const App = () => (
   <ChakraProvider theme={theme}>
@@ -18,19 +21,16 @@ export const App = () => (
       <Grid minH="100vh" p={3}>
         <ColorModeSwitcher justifySelf="flex-end" />
         <VStack spacing={8}>
-          <Logo h="40vmin" pointerEvents="none" />
-          <Text>
-            Edit <Code fontSize="xl">src/App.tsx</Code> and save to reload.
-          </Text>
-          <Link
-            color="teal.500"
-            href="https://chakra-ui.com"
-            fontSize="2xl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn Chakra
-          </Link>
+          <Router>
+            <Switch>
+              <Route exact path="/">
+                <Link to="/csv-xlsx">CSV u XLSX konverter</Link>
+              </Route>
+              <Route path="/csv-xlsx">
+                <CsvToXslsXPage />
+              </Route>
+            </Switch>
+          </Router>
         </VStack>
       </Grid>
     </Box>
