@@ -44,7 +44,7 @@ export const CsvToXslsXPage: React.FC = () => {
                     const book = utils.book_new();
                     utils.book_append_sheet(book, ws, "Sheet1");
                     const data = result.data as any;
-                    const additionalName = data.length >= 1 && data[1].length >= 10 ? data[1][10].split('/').join('_') : 'nepoznat-id'
+                    const additionalName = data && data.length > 0 && data[0]["REFERENCA"] ? data[0]["REFERENCA"].split('/').join('_') : 'nepoznat-id'
                     writeFile(book, `aks-expeditor-${formatDate(new Date())}-${additionalName}.xls`);
                 }
             })
