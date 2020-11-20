@@ -37,13 +37,15 @@ export const CsvToXslsXPage: React.FC = () => {
 
             Papa.parse(file, {
                 header: true,
+                delimiter: ';',
+                encoding: "utf8",
                 complete: (result) => {
-
-                    console.log('parsovan!', result);
                     const ws = utils.json_to_sheet(result.data);
                     const book = utils.book_new();
                     utils.book_append_sheet(book, ws, "Sheet1");
-                    writeFile(book, `aks-expeditor-${formatDate(new Date())}.xls`);
+                    const data = result.data as any;
+                    const additionalName = data.length >= 1 && data[1].length >= 10 ? data[1][10].split('/').join('_') : 'nepoznat-id'
+                    writeFile(book, `aks-expeditor-${formatDate(new Date())}-${additionalName}.xls`);
                 }
             })
         });
@@ -51,7 +53,7 @@ export const CsvToXslsXPage: React.FC = () => {
     }, [])
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
         onDrop, accept: [
-            ".csv"
+            ".xls", ".csv"
         ],
 
     })
